@@ -11,8 +11,15 @@ public class Test {
 
     public static void main(String[] args) {
         Singleton.INSTANCE.whateverMethod();
+
+        int a = 2;
+        int b = 3;
+        int c = 4;
+
+        a = b= c;
+
+        System.out.println(a);
+        System.out.println(b);
     }
-
-
 
 }
