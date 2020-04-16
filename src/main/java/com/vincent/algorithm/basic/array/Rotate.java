@@ -7,7 +7,7 @@ public class Rotate {
     public static void main(String args[]) {
         Solution solution = new Solution();
         int[] a = new int[]{1,2,3,4,5,6,7};
-        solution.rotate1(a,3);
+        solution.rotate(a,3);
         for(int i:a) {
             System.out.println(i);
         }
