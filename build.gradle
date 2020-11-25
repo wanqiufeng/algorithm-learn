@@ -17,3 +17,7 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '27.1-jre'
 
 }
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
