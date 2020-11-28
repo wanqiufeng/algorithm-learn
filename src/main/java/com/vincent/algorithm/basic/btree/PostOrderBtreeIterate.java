@@ -1,5 +1,7 @@
 package com.vincent.algorithm.basic.btree;
 
+import com.google.common.collect.Lists;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,10 +15,12 @@ import java.util.List;
  */
 public class PostOrderBtreeIterate {
     public static void main(String[] args) {
-
+        TreeNode treeNode = initTestTree();
+        List<Integer> traverse = traverse(treeNode);
+        traverse.forEach(System.out::println);
     }
 
-    public List<Integer> traverse(TreeNode root) {
+    public static List<Integer> traverse(TreeNode root) {
         LinkedList<Integer> resultStack = new LinkedList<>();
         if(root == null) return resultStack;
         LinkedList<TreeNode> tempStack = new LinkedList<>();
@@ -33,10 +37,23 @@ public class PostOrderBtreeIterate {
         return resultStack;
     }
 
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
         TreeNode(int x) { val = x; }
+    }
+
+    private static TreeNode initTestTree() {
+        TreeNode treeNode1 = new TreeNode(3);
+        TreeNode treeNode2 = new TreeNode(4);
+        TreeNode treeNode3 = new TreeNode(5);
+        TreeNode treeNode4 = new TreeNode(6);
+        TreeNode treeNode5 = new TreeNode(7);
+        treeNode1.left = treeNode2;
+        treeNode1.right = treeNode3;
+        treeNode2.left = treeNode4;
+        treeNode2.right =treeNode5;
+        return treeNode1;
     }
 }
