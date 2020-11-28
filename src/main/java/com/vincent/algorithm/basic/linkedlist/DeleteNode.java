@@ -31,6 +31,51 @@ package com.vincent.algorithm.basic.linkedlist;
  * 不要从你的函数中返回任何结果。
  */
 public class DeleteNode {
+    public static void main(String[] args) {
+        ListNode listNode = initListNode();
+        deleteSpecificNode(listNode, 3);
+        while (listNode != null) {
+            System.out.println(listNode.val);
+            listNode = listNode.next;
+        }
+    }
+
+    private static void deleteSpecificNode(ListNode listNode, int i) {
+        if(listNode == null) {
+            return;
+        }
+
+        //如果要删除的数据，刚好是链表的第一个元素，那么需要将第一个元素的值改为其next，然后删除其next即可
+        if(listNode.val == i) {
+            listNode.val = listNode.next.val;
+            listNode.next = listNode.next.next;
+            return;
+        }
+
+        //其余的删除只需要找到该元素所的位置，然后完成其前和其后的两个元素绑定即可
+        while (listNode.next != null) {
+            if(listNode.next.val == i) {
+                listNode.next = listNode.next.next;
+                break;
+            }
+            listNode = listNode.next;
+        }
+    }
+
+    private static ListNode initListNode() {
+        ListNode listNode1 = new ListNode(1);
+        ListNode listNode2 = new ListNode(2);
+        ListNode listNode3 = new ListNode(3);
+        ListNode listNode4 = new ListNode(4);
+        ListNode listNode5 = new ListNode(5);
+
+        listNode1.next = listNode2;
+        listNode2.next = listNode3;
+        listNode3.next = listNode4;
+        listNode4.next = listNode5;
+        return listNode1;
+    }
+
     class Solution {
         public void deleteNode(ListNode node) {
             ListNode after = node.next;
@@ -39,7 +84,7 @@ public class DeleteNode {
     }
 
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
         ListNode(int x) {
