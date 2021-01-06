@@ -22,6 +22,12 @@ public class SimpleTest {
         System.out.println(students.size());
     }
 
+    @Test
+    public void test1(){
+        System.out.println(2<<3);
+    }
+
+
 
 
     public class Student {

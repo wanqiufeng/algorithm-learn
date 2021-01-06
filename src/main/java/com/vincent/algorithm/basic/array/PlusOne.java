@@ -30,10 +30,22 @@ public class PlusOne {
         }
     }
     static class Solution {
+        /**
+         因为加1是从个位加起，而个位是数组的最后一个元素，所以倒着迭代数组
+         如果某一位，加起来
+            等于10
+                将这一位置位0，continue for循环即可。
+            不等于10，
+                说明后续都不需要进位，对当前位做计算赋值后返回即可
+
+         如果for 循环执行完毕后，依然没有返回，说明整个数组都进位了。那么久需要扩充数组。
+         而都进位的场景，只有9999这种全是9的数据，对于这种数据，我们创建一个新数组，高位置1，连数组迁移都省了。
+
+         */
         public int[] plusOne(int[] digits) {
             //从最后一个数循环起，加１，如果大于９，则进位加１
             for(int i=digits.length-1;i>=0;i--) {
-                if(digits[i]+1==10) {
+                if(digits[i]+1 == 0) {
                     digits[i] = 0;
                     continue;
                 } else {
@@ -42,7 +54,6 @@ public class PlusOne {
                 }
 
             }
-
             digits = new int[digits.length+1];
             digits[0]=1;
             return digits;
