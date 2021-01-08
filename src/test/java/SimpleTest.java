@@ -63,4 +63,14 @@ public class SimpleTest {
             return Objects.hash(code, name);
         }
     }
+
+
+
+    @Test
+    public void test5(){
+        String a = "5";
+        char c = a.charAt(0);
+        int b = c - '1';
+        System.out.println(b);
+    }
 }

@@ -1,4 +1,4 @@
-package com.vincent.algorithm.basic.sort;
+package com.vincent.algorithm.basic.array;
 
 /**
  * Created by chenjun on 19-6-2.

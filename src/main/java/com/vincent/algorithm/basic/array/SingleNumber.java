@@ -1,9 +1,6 @@
 package com.vincent.algorithm.basic.array;
 
-import com.google.common.base.Preconditions;
-
 /**
- * Created by chenjun on 19-6-2.
  * 给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。
  *
  * 说明：
@@ -14,51 +11,35 @@ import com.google.common.base.Preconditions;
  *
  * 输入: [2,2,1]
  * 输出: 1
- * 示例 2:
+ * 示例2:
  *
  * 输入: [4,1,2,1,2]
  * 输出: 4
+ *
+ * 来源：力扣（LeetCode）
+ * 链接：https://leetcode-cn.com/problems/single-number
+ * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
 public class SingleNumber {
-    public static void main(String args[]) {
-        Solution solution = new Solution();
-        int[] a = new int[] {4,1,2,1,2};
-        int i = solution.singleNumber(a);
-        Preconditions.checkArgument(i==4);
+    public static void main(String[] args) {
+
     }
-    static class Solution {
-        public int singleNumber(int[] nums) {
-            //循环数组，拿到每个元素，在去跟数组中的每个元素挨个比较
-            //找到相同的，则继续循环。
-            //没知道相同的，则直接返回
-            //怎么知道没知道找不到相同的？
-            //除自己外，比较到最后一个元素，都不相等
-            if(nums.length == 1) {
-                return nums[0];
-            }
-            for(int i = 0;i<nums.length;i++) {
-                for(int j = 0;j<nums.length;j++) {
-                    if(i==j && j==nums.length-1) {
-                        //两层循环都来到了最后一个元素，说明前面比较都没匹配。最后一个元素跟所有都不相等，直接返回
-                        return nums[i];
-                    }
 
-                    if(i==j) {
-                        //跳过跟自己的比较
-                        continue;
-                    }
-                    //内层循环比较完，都没有找到相等，直接返回
-                    if(nums[i]!=nums[j] && j == nums.length-1) {
-                        return nums[i];
-                    }
-                    if(nums[i] == nums[j]) {
-                        //普通相等，则直接跳出内层循环，进入下一个元素匹配
-                        break;
-                    }
+    /**
+     用抑或运算。挨个将数组中的元素进行抑或。抑或运算的特点：
+     1.任何数和 0 做异或运算，结果仍然是原来的数，即 a⊕0=a。
+     2.任何数和其自身做异或运算，结果是 0，即 a⊕a=0。
+     3.异或运算满足交换律和结合律，即 a⊕b⊕a=b⊕a⊕a=b⊕(a⊕a)=b⊕0=b。
 
-                }
-            }
-            throw new NullPointerException();
+     也即，其中成双成对的数字抑或后会变0，而0给单的那个数字抑或会保留那个数字。而抑或定律满足交换和结合定律，所以数组中数字的分布无论什么顺序都ok
+
+
+     */
+    public int singleNumber(int[] nums) {
+        int orOperator = 0;
+        for(int num:nums) {
+            orOperator ^= num;
         }
+        return orOperator;
     }
 }
