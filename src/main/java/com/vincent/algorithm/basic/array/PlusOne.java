@@ -35,6 +35,9 @@ public class PlusOne {
          如果某一位，加起来
             等于10
                 将这一位置位0，continue for循环即可。
+                为什么不需要进位的变量？
+                    因为尝试加1 是for循环的第一段代码，如果上一段有进位，还会走for循环
+                    如果没有进位，那么早就结束返回了
             不等于10，
                 说明后续都不需要进位，对当前位做计算赋值后返回即可
 
@@ -47,7 +50,6 @@ public class PlusOne {
             for(int i=digits.length-1;i>=0;i--) {
                 if(digits[i]+1 == 0) {
                     digits[i] = 0;
-                    continue;
                 } else {
                     digits[i] = digits[i]+1;
                     return digits;
