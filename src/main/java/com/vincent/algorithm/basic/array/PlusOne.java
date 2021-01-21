@@ -48,7 +48,7 @@ public class PlusOne {
         public int[] plusOne(int[] digits) {
             //从最后一个数循环起，加１，如果大于９，则进位加１
             for(int i=digits.length-1;i>=0;i--) {
-                if(digits[i]+1 == 0) {
+                if(digits[i]+1 == 10) {
                     digits[i] = 0;
                 } else {
                     digits[i] = digits[i]+1;
