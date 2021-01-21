@@ -55,7 +55,7 @@ public class ReverseNodesInKGroup {
             currentNode = currentNode.next;
             count++;
         }
-        if(count == k) {
+        if(count == k) { //这里一定要判断下，因为很可能上一步加加厚，currentNode已经变成Null了。但链表刚好K个长度，所以还是要翻转
             currentNode = reverseKGroup(currentNode,k);
             while (count-->0) {
                 ListNode temp = head.next;

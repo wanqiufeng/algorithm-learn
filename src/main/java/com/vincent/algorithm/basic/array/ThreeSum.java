@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * leetcode 15
  * 给你一个包含 n 个整数的数组nums，判断nums中是否存在三个元素 a，b，c ，使得a + b + c = 0 ？请你找出所有和为 0 且不重复的三元组。
  *
  * 注意：答案中不可以包含重复的三元组。
@@ -69,7 +70,7 @@ public class ThreeSum {
                     tempResult.add(nums[j]);
                     tempResult.add(nums[k]);
                     result.add(tempResult);
-                    break;
+                    break;//这里一定要break，因为nums[i] 是确定的。那么nums[j]和nums[k]可能的组合也是确定，只是顺序不同而已，而我们要返回的结果不关心顺序，所以如果找到了组合。那么就跳出循环，进行笑一次查找
                 }
                 else if(sum>0) {
                     k--;
